@@ -17,8 +17,6 @@ bin
 # Vendor folder with dependencies
 vendor
 lock.json
-manifest.json
 
 # Ignore Dockerfile with credentials
 Dockerfile
-

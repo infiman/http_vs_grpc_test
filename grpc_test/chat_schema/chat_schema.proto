@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package chat_schema;
+
+service Chat {
+  rpc GetRooms(RoomSearch) returns (stream Room) {}
+  rpc Login(RoomRequest) returns (AuthResponse) {}
+  rpc Chat(stream Message) returns (stream Message) {}
+  rpc Logout(RoomRequest) returns (AuthResponse) {}
+}
+
+message RoomSearch {
+  string sub_string = 1;
+}
+
+message RoomRequest {
+  string name = 1;
+  string user_name = 2;
+}
+
+message Room {
+  string name = 1;
+  int32 users_count = 2;
+}
+
+message AuthResponse {
+  string message = 2;
+  int32 status = 3;
+}
+
+message Message {
+  string room_name = 1;
+  string user_name = 2;
+  string message = 3;
+  string timestamp = 4;
+}
